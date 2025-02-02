@@ -1,97 +1,161 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Weather App
 
-# Getting Started
+A modern React Native weather application that provides real-time weather information and forecasts using the WeatherAPI.
+ 
+## Features
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+- Real-time weather information
+- 3-day weather forecast
+- City search with auto-suggestions
+- Dynamic backgrounds based on weather conditions
+- Pull-to-refresh functionality
+- Detailed weather information including:
+  - Temperature
+  - Weather conditions
+  - Humidity
+  - Wind speed
+  - Feels like temperature
+- Modern UI with glassmorphism design
+- Error handling and loading states
 
-## Step 1: Start Metro
+## Prerequisites
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Before you begin, ensure you have installed:
+- Node.js (v14 or higher)
+- npm or yarn
+- React Native CLI
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Installation
 
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+1. Clone the repository:
+```bash
+git clone https://github.com/devansh-sudo/WeatherApp.git
+cd WeatherApp
 ```
 
-## Step 2: Build and run your app
+2. Install dependencies:
+```bash
+npm install
+```
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+3. Add your WeatherAPI key:
+Create a `.env` file in the root directory and add your API key:
+```
+APIKEY=your_api_key_here
+```
 
-### Android
+4. Install pods (iOS only):
+```bash
+cd ios && pod install && cd ..
+```
 
-```sh
-# Using npm
+## Running the App
+
+### For Android:
+```bash
 npm run android
-
-# OR using Yarn
+# or
 yarn android
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+### For iOS:
+```bash
 npm run ios
-
-# OR using Yarn
+# or
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Project Structure
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```
+src/
+├── api/
+│   └── weatherApi.js
+├── components/
+│   ├── common/
+│   │   ├── LoadingSpinner.js
+│   │   └── SearchBar.js
+│   └── weather/
+│       ├── CurrentWeather.js
+│       ├── ForecastList.js
+│       └── WeatherCard.js
+├── screens/
+│   ├── HomeScreen.js
+│   └── ForecastDetailScreen.js
+│   └── SettingsScreen.js
+├── store/
+│   ├── actions/
+│   │   └── weatherActions.js
+│   ├── reducers/
+│   │   └── weatherReducer.js
+│   └── sagas/
+│       └── weatherSaga.js
+└── utils/
+    └── weatherUtils.js
+```
 
-## Step 3: Modify your app
+## Dependencies
 
-Now that you have successfully run the app, let's make changes!
+- react-native: 0.72.x
+- @react-navigation/native: ^6.x.x
+- @react-navigation/stack: ^6.x.x
+- redux: ^4.x.x
+- react-redux: ^8.x.x
+- redux-saga: ^1.x.x
+- axios: ^1.x.x
+- react-native-vector-icons: ^10.x.x
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## API Reference
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+This app uses the WeatherAPI. You'll need to sign up for an API key at [WeatherAPI](https://www.weatherapi.com/).
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## Environment Setup
 
-## Congratulations! :tada:
+Required environment variables:
+```
+APIKEY=your_api_key_here
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+## Contributing
 
-### Now what?
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+## Troubleshooting
 
-# Troubleshooting
+Common issues and solutions:
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+1. Build fails:
+```bash
+# Clean and rebuild
+cd android
+./gradlew clean
+cd ..
+npm run android
+```
 
-# Learn More
+2. Metro bundler issues:
+```bash
+# Clear metro cache
+npm start -- --reset-cache
+```
 
-To learn more about React Native, take a look at the following resources:
+## License
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+- Weather data provided by [WeatherAPI](https://www.weatherapi.com/)
+- Background images from [Unsplash](https://unsplash.com/)
+- Icons from [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
+
+## Contact
+
+Your Name - devanshdixit97@gmail.com
+Project Link: https://github.com/devansh-sudo/WeatherApp.git
